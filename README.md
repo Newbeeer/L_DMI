@@ -1,5 +1,80 @@
-These are the codes for the experiments in our paper L_DMI: A Novel Information-theoretic Loss Function for Training Deep Nets Robust to Label Noise.
+# Introduction
 
-The enviroments needed: python3, pytorch, PIL, tqdm, numpy, argparse
+Implementation for NeurIPS 2019 paper **$\mathcal{L}_{DMI}$: An Information-theoretic Noise-robust Loss Function**
 
-See `test.sh` in each directory for examples of how to run the experiments.
+paper link: 
+
+
+
+###Fashion MNIST dataset
+
+- To run experiments of *Fashion MNIST* dataset in `fashion` directory:
+
+```shell
+python3 fashion.py --r noisy_amount --s seed --c case_num --device device_num
+
+noise_amount: the amount of noise amount r of label flipping. (0 <= r <= 1)
+seed: random seed
+case_num :  1: class-independent; 2: class-dependent (a); 3: class-dependent (b)
+device_num: GPU number
+
+```
+
+
+
+### CIFAR-10 dataset:
+
+- To run experiments of *CIFAR10* dataset in `CIFAR-10` directory, pleases run all the baseline in the following order: 
+
+  ```shell
+  python3 CE.py --r noise_amount --s seed --device device_num
+  python3 FW.py --r noise_amount --s seed --device device_num
+  python3 GCE.py --r noise_amount --s seed --device device_num
+  python3 LCCN.py --r noise_amount --s seed --device device_num
+  python3 DMI.py --r noise_amount --s seed --device device_num
+  
+  noise_amount: the amount of noise amount r of label flipping. (0 <= r <= 1)
+  seed: random seed
+  device_num: GPU number
+  ```
+
+  
+
+### Dog & Cat datasete:
+
+- To run experiments of *Dog vs. Cats* dataset in `dogcat` directory, pleases run all the baseline in the following order: 
+
+  ```shell
+  python3 CE.py --r noise_amount --s seed --device device_num
+  python3 FW.py --r noise_amount --s seed --device device_num
+  python3 GCE.py --r noise_amount --s seed --device device_num
+  python3 LCCN.py --r noise_amount --s seed --device device_num
+  python3 DMI.py --r noise_amount --s seed --device device_num
+  
+  noise_amount: the amount of noise amount r of label flipping. (0 <= r <= 1)
+  seed: random seed
+  device_num: GPU number
+  ```
+
+  
+
+### Clothing1M dataset
+
+- To run experiments of *Clothing1M* dataset in `clothing` directory, pleases run all the baseline in the following order: 
+
+  ```shell
+  python3 main.py --device device_num
+  
+  device_num: GPU number
+  ```
+
+
+
+### TODO:
+
+Combine all the APIs to dataset into one file.
+
+
+
+
+

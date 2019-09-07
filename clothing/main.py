@@ -12,10 +12,9 @@ import argparse
 from collections import OrderedDict
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--bs', type=int)
-parser.add_argument('--lr', type=float)
+parser.add_argument('--device', type=int)
 args = parser.parse_args()
-
+torch.cuda.set_device(args.device)
 batch_size = 256
 num_classes = 14
 

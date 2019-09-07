@@ -18,8 +18,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--r', type=float)
 parser.add_argument('--s', type=int)
 parser.add_argument('--c', type=int)
+parser.add_argument('--device', type=int)
 args = parser.parse_args()
-
+torch.cuda.set_device(args.device)
 r = args.r
 root = './'
 batch_size = 128

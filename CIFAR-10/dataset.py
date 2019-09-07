@@ -27,8 +27,9 @@ batch_size = 256
 parser = argparse.ArgumentParser()
 parser.add_argument('--r',type=float)
 parser.add_argument('--s',type=int)
+parser.add_argument('--device',type=int)
 args = parser.parse_args()
-
+torch.cuda.set_device(args.device)
 
 # Uniform  noise:
 r = args.r
