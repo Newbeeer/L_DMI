@@ -6,7 +6,7 @@ paper link:
 
 
 
-###Fashion MNIST dataset
+### Fashion MNIST dataset
 
 - To run experiments of *Fashion MNIST* dataset in `fashion` directory:
 
