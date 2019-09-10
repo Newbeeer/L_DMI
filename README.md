@@ -1,6 +1,6 @@
 # Introduction
 
-Implementation for NeurIPS 2019 paper : <img src="/Users/aaronxu/Desktop/image/屏幕快照 2019-09-10 下午8.09.34.png" width="450px" />
+Implementation for NeurIPS 2019 paper : <img src="https://github.com/Newbeeer/L_DMI/blob/master/title.png" width="450px" />
 
 paper link: https://arxiv.org/abs/1909.03388
 
