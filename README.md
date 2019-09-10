@@ -1,9 +1,7 @@
 # Introduction
 
-Implementation for NeurIPS 2019 paper   
-$$
-\mathcal{L}_{DMI}: \text{An Information-theoretic Noise-robust Loss Function}
-$$
+Implementation for NeurIPS 2019 paper   **${L}_{DMI}$: An Information-theoretic Noise-robust Loss Function**
+
 paper link: https://arxiv.org/abs/1909.03388
 
 
