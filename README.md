@@ -6,7 +6,7 @@ paper link: https://arxiv.org/abs/1909.03388
 
 
 
-<img src="https://github.com/Newbeeer/L_DMI/blob/master/graph.png" width="450px" />
+<img src="https://github.com/Newbeeer/L_DMI/blob/master/graph.png" width="650px" />
 
 ### Fashion MNIST dataset
 
