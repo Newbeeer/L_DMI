@@ -18,8 +18,6 @@ import torchvision.transforms as transforms
 
 import argparse
 
-# data root
-root = '/home1/xuyilun/cifar'
 # batch size
 batch_size = 256
 
@@ -28,9 +26,12 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--r',type=float)
 parser.add_argument('--s',type=int)
 parser.add_argument('--device',type=int)
+parser.add_argument('--root', type=str, help='Path for loading CIFAR10 dataset')
 args = parser.parse_args()
 torch.cuda.set_device(args.device)
 
+# data root:
+root = args.root
 # Uniform  noise:
 r = args.r
 conf_matrix = torch.zeros((10,10))
