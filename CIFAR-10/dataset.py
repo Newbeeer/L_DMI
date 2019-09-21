@@ -34,13 +34,15 @@ torch.cuda.set_device(args.device)
 root = args.root
 # Uniform  noise:
 r = args.r
-conf_matrix = torch.zeros((10,10))
-for i in range(10):
-    for j in range(10):
-        if i != j:
-            conf_matrix[i][j] = r / 10
-        else:
-            conf_matrix[i][j] = 1 - r * 0.9
+conf_matrix = torch.eye(10)
+conf_matrix[9][1] = r
+conf_matrix[9][9] = 1-r
+conf_matrix[2][0] = r
+conf_matrix[2][2] = 1-r
+conf_matrix[4][7] = r
+conf_matrix[4][4] = 1-r
+conf_matrix[3][5] = r
+conf_matrix[3][3] = 1-r
 
 
 class CIFAR10_(data.Dataset):
