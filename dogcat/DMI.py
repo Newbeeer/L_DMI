@@ -24,7 +24,7 @@ def train(train_loader, model, optimizer, criterion=CE):
 
     for i, (idx, input, target) in enumerate(tqdm(train_loader)):
         if idx.size(0) != batch_size:
-            break
+            continue
 
         input = torch.autograd.Variable(input.cuda())
         target = torch.autograd.Variable(target.cuda())
@@ -67,7 +67,7 @@ def validate(valid_loader, model, criterion):
 
         for i, (idx, input, target) in enumerate(tqdm(valid_loader)):
             if i == 1:
-                continue
+                break
 
             input = torch.autograd.Variable(input.cuda())
             target = torch.autograd.Variable(target.cuda())
