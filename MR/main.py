@@ -13,11 +13,7 @@ from download_dataset import DATASETS
 from preprocessors import DATASET_TO_PREPROCESSOR
 import dictionaries
 from dataloaders import TextDataset, TextDataLoader
-
-from models.CharCNN import CharCNN
 from models.WordCNN import WordCNN
-from models.VDCNN import VDCNN
-from models.QRNN import QRNN
 
 import utils
 
