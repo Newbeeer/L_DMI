@@ -59,7 +59,25 @@ device_num: GPU number
   device_num: GPU number
   ```
 
+### MR dataset
+
+- To download the dataset:
+  ```shell
+  python3 download_dataset.py MR
   
+  noise_amount: the amount of noise amount r of label flipping. (0 <= r <= 1)
+  seed: random seed
+  device_num: GPU number
+  ```
+
+- To run experiments of *MR* dataset in `MR` directory:
+  ```shell
+  python3 main.py --r noise_amount --s seed --device device_num WordCNN
+  
+  noise_amount: the amount of noise amount r of label flipping. (0 <= r <= 1)
+  seed: random seed
+  device_num: GPU number
+  ```
 
 ### Clothing1M dataset
 
