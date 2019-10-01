@@ -64,10 +64,6 @@ device_num: GPU number
 - To download the dataset:
   ```shell
   python3 download_dataset.py MR
-  
-  noise_amount: the amount of noise amount r of label flipping. (0 <= r <= 1)
-  seed: random seed
-  device_num: GPU number
   ```
 
 - To run experiments of *MR* dataset in `MR` directory:
