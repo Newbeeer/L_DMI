@@ -1,0 +1,66 @@
+import torch
+from torch import nn
+
+class WordCNN(nn.Module):
+    
+    def __init__(self, n_classes, dictionary, args):
+        super(WordCNN, self).__init__()
+
+        mode = args.mode
+        kernel_sizes = args.kernel_sizes # kernel_sizes=[3,4,5]
+
+        vocabulary_size = dictionary.vocabulary_size
+        vector_size = dictionary.vector_size
+        embedding_weight = dictionary.embedding
+        if embedding_weight is not None:
+            embedding_weight = torch.FloatTensor(embedding_weight)
+        self.mode = mode
+        if self.mode == 'rand':
+            self.embedding = nn.Embedding(vocabulary_size, vector_size)
+            embed_size = vector_size
+        elif self.mode == 'static':
+            self.embedding = nn.Embedding(vocabulary_size, vector_size)
+            self.embedding.weight = nn.Parameter(embedding_weight, requires_grad=False)
+            embed_size = vector_size
+        elif self.mode == 'non-static':
+            self.embedding = nn.Embedding(vocabulary_size, vector_size)
+            self.embedding.weight = nn.Parameter(embedding_weight, requires_grad=True)
+            embed_size = vector_size
+        elif self.mode == 'multichannel':
+            self.static_embedding = nn.Embedding(vocabulary_size, vector_size)
+            self.static_embedding.weight = nn.Parameter(embedding_weight, requires_grad=False)
+            self.non_static_embedding = nn.Embedding(vocabulary_size, vector_size)
+            self.non_static_embedding.weight = nn.Parameter(embedding_weight, requires_grad=True)
+            embed_size = vector_size * 2
+        else:
+            raise NotImplementedError
+        
+        convs = [nn.Conv1d(in_channels=embed_size, out_channels=100, kernel_size=kernel_size) 
+                       for kernel_size in kernel_sizes]
+        self.conv_modules = nn.ModuleList(convs)
+        self.tanh = nn.Tanh()
+        self.dropout = nn.Dropout()
+        self.linear = nn.Linear(in_features=300, out_features=n_classes)
+        self.logsoftmax = nn.LogSoftmax(dim=1)
+        
+    def forward(self, sentences):
+        
+        if not self.mode == 'multichannel':
+            embedded = self.embedding(sentences)
+        else:
+            static_embedded = self.static_embedding(sentences)
+            non_static_embedded = self.non_static_embedding(sentences)
+            embedded = torch.cat([static_embedded, non_static_embedded], dim=2)
+
+        embedded = embedded.transpose(1,2) # (batch_size, wordvec_size, sentence_length)
+        
+        feature_list = []
+        for conv in self.conv_modules:
+            feature_map = self.tanh(conv(embedded))
+            max_pooled, argmax = feature_map.max(dim=2)
+            feature_list.append(max_pooled)
+            
+        features = torch.cat(feature_list, dim=1)
+        features_regularized = self.dropout(features)
+        log_probs = self.logsoftmax(self.linear(features_regularized))
+        return log_probs
