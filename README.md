@@ -29,16 +29,17 @@ device_num: GPU number
 - To run experiments of *CIFAR10* dataset in `CIFAR-10` directory, pleases run all the baseline in the following order: 
 
   ```shell
-  python3 CE.py --r noise_amount --s seed --device device_num --root path
-  python3 FW.py --r noise_amount --s seed --device device_num --root path
-  python3 GCE.py --r noise_amount --s seed --device device_num --root path
-  python3 LCCN.py --r noise_amount --s seed --device device_num --root path
-  python3 DMI.py --r noise_amount --s seed --device device_num --root path
+  python3 CE.py --r noise_amount --s seed --device device_num --root path --noise-type type
+  python3 FW.py --r noise_amount --s seed --device device_num --root path --noise-type type
+  python3 GCE.py --r noise_amount --s seed --device device_num --root path --noise-type type
+  python3 LCCN.py --r noise_amount --s seed --device device_num --root path --noise-type type
+  python3 DMI.py --r noise_amount --s seed --device device_num --root path --noise-type type
   
   noise_amount: the amount of noise amount r of label flipping. (0 <= r <= 1)
   seed: random seed
   device_num: GPU number
   root: path to the CIFAR-10 dataset
+  noise-type: class-dependent or class-independent (default:class-dependent)
   ```
 
   

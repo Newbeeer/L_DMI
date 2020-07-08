@@ -22,7 +22,6 @@ def DMI_loss(output, target):
 def train(train_loader, model, optimizer, criterion):
 
     model.train()
-
     for i, (idx, input, target) in enumerate(train_loader):
         if idx.size(0) != batch_size:
             continue
@@ -32,7 +31,6 @@ def train(train_loader, model, optimizer, criterion):
 
         output = model(input)
         loss = criterion(output, target)
-
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
@@ -99,7 +97,6 @@ def validate_acc(valid_loader, model, criterion):
 
         accuracy = 100. * correct / total
 
-    #print('valid_loss=', loss_t.item())
     return accuracy
 
 
@@ -110,7 +107,6 @@ def main_dmi():
     test_acc = test(model=model_dmi, test_loader=test_loader_)
     print('test_acc=', test_acc)
     for epoch in range(100):
-        print("epoch=", epoch,'r=', args.r)
         learning_rate = 1e-6
 
         optimizer_dmi = torch.optim.SGD(model_dmi.parameters(), momentum=0.9, weight_decay=1e-4, lr=learning_rate)
@@ -119,7 +115,7 @@ def main_dmi():
 
         valid_loss = validate_acc(valid_loader=valid_loader_noisy, model=model_dmi, criterion=DMI_loss)
         test_acc = test(model=model_dmi, test_loader=test_loader_)
-        print('test_acc=', test_acc)
+        print('epoch : {}, r: {}, test_acc : {}'.format(epoch,args.r,test_acc))
         if valid_loss > best_valid_loss:
             best_valid_loss = valid_loss
             torch.save(model_dmi, './model_dmi_' + str(args.r) + '_' + str(args.s))

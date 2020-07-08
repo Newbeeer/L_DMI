@@ -27,22 +27,35 @@ parser.add_argument('--r',type=float)
 parser.add_argument('--s',type=int)
 parser.add_argument('--device',type=int)
 parser.add_argument('--root', type=str, help='Path for loading CIFAR10 dataset')
+parser.add_argument('--noise-type', type=str, default='class-dependent',
+                        help='[class-dependent,class-independent]')
 args = parser.parse_args()
 torch.cuda.set_device(args.device)
 
 # data root:
 root = args.root
-# Uniform  noise:
+# noise:
 r = args.r
 conf_matrix = torch.eye(10)
-conf_matrix[9][1] = r
-conf_matrix[9][9] = 1-r
-conf_matrix[2][0] = r
-conf_matrix[2][2] = 1-r
-conf_matrix[4][7] = r
-conf_matrix[4][4] = 1-r
-conf_matrix[3][5] = r
-conf_matrix[3][3] = 1-r
+# Uniform (Class-independent) noise:
+if args.noise_type == 'class-independent':
+    for i in range(10):
+        for j in range(10):
+            if i == j:
+                conf_matrix[i][i] = 1 - r
+            else:
+                conf_matrix[i][j] = (r) / 9
+else:
+    # Class-dependent noise
+    conf_matrix[9][1] = r
+    conf_matrix[9][9] = 1 - r
+    conf_matrix[2][0] = r
+    conf_matrix[2][2] = 1 - r
+    conf_matrix[4][7] = r
+    conf_matrix[4][4] = 1 - r
+    conf_matrix[3][5] = r
+    conf_matrix[3][3] = 1 - r
+
 
 
 class CIFAR10_(data.Dataset):
