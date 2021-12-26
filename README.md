@@ -76,7 +76,7 @@ device_num: GPU number
   device_num: GPU number
   ```
 
-### Clothing1M dataset
+### Clothing1M dataset (https://drive.google.com/folderview?id=0B67_d0rLRTQYU2E4aHNHaE1uMTg&usp=sharing)
 
 - To run experiments of *Clothing1M* dataset in `clothing` directory, pleases run all the baseline in the following order: 
 
