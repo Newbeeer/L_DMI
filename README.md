@@ -44,7 +44,9 @@ device_num: GPU number
 
   
 
-### Dog & Cat datasete (https://www.kaggle.com/c/dogs-vs-cats):
+### Dog & Cat datasete 
+
+Link to the dataset: https://www.kaggle.com/c/dogs-vs-cats
 
 - To run experiments of *Dog vs. Cats* dataset in `dogcat` directory, pleases run all the baseline in the following order: 
 
@@ -76,7 +78,9 @@ device_num: GPU number
   device_num: GPU number
   ```
 
-### Clothing1M dataset (https://drive.google.com/folderview?id=0B67_d0rLRTQYU2E4aHNHaE1uMTg&usp=sharing)
+### Clothing1M dataset 
+
+Link to the dataset: https://drive.google.com/folderview?id=0B67_d0rLRTQYU2E4aHNHaE1uMTg&usp=sharing
 
 - To run experiments of *Clothing1M* dataset in `clothing` directory, pleases run all the baseline in the following order: 
 
