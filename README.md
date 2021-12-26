@@ -29,11 +29,11 @@ device_num: GPU number
 - To run experiments of *CIFAR10* dataset in `CIFAR-10` directory, pleases run all the baseline in the following order: 
 
   ```shell
-  python3 CE.py --r noise_amount --s seed --device device_num --root path --noise-type type
-  python3 FW.py --r noise_amount --s seed --device device_num --root path --noise-type type
-  python3 GCE.py --r noise_amount --s seed --device device_num --root path --noise-type type
-  python3 LCCN.py --r noise_amount --s seed --device device_num --root path --noise-type type
-  python3 DMI.py --r noise_amount --s seed --device device_num --root path --noise-type type
+  python3 CE.py --r noise_amount --s seed --device device_num --root path --noise-type noise-type
+  python3 FW.py --r noise_amount --s seed --device device_num --root path --noise-type noise-type
+  python3 GCE.py --r noise_amount --s seed --device device_num --root path --noise-type noise-type
+  python3 LCCN.py --r noise_amount --s seed --device device_num --root path --noise-type noise-type
+  python3 DMI.py --r noise_amount --s seed --device device_num --root path --noise-type noise-type
   
   noise_amount: the amount of noise amount r of label flipping. (0 <= r <= 1)
   seed: random seed
@@ -44,7 +44,7 @@ device_num: GPU number
 
   
 
-### Dog & Cat datasete:
+### Dog & Cat datasete (https://www.kaggle.com/c/dogs-vs-cats):
 
 - To run experiments of *Dog vs. Cats* dataset in `dogcat` directory, pleases run all the baseline in the following order: 
 

@@ -16,6 +16,7 @@ def DMI_loss(output, target):
     y_onehot.scatter_(1, targets, 1)
     y_onehot = y_onehot.transpose(0, 1).cuda()
     mat = y_onehot @ outputs
+    print("matrix:",mat)
     return -1.0 * torch.log(torch.abs(torch.det(mat.float())) + 0.001)
 
 
@@ -31,6 +32,7 @@ def train(train_loader, model, optimizer, criterion):
 
         output = model(input)
         loss = criterion(output, target)
+        print("traning loss:",loss)
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
@@ -101,7 +103,8 @@ def validate_acc(valid_loader, model, criterion):
 
 
 def main_dmi():
-    model_dmi = torch.load('./model_ce_' + str(args.r) + '_' + str(args.s))
+    #model_dmi = torch.load('./model_ce_' + str(args.r) + '_' + str(args.s))
+    model_dmi = ResNet34().cuda()
     best_valid_loss = validate_acc(valid_loader=valid_loader_noisy, model=model_dmi, criterion=DMI_loss)
     torch.save(model_dmi, './model_dmi_' + str(args.r) + '_' + str(args.s))
     test_acc = test(model=model_dmi, test_loader=test_loader_)
