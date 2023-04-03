@@ -80,7 +80,7 @@ Link to the dataset: https://www.kaggle.com/c/dogs-vs-cats
 
 ### Clothing1M dataset 
 
-Link to the dataset: https://drive.google.com/folderview?id=0B67_d0rLRTQYU2E4aHNHaE1uMTg&usp=sharing . We have split the data into clean_test.txt, clean_train. txt,clean_val.txt and noisy_train.txt in our `./clothing` directory.
+Link to the dataset: https://drive.google.com/drive/folders/0B67_d0rLRTQYU2E4aHNHaE1uMTg?resourcekey=0-_FShcGYZwIyESjnz6S6aLQ&usp=sharing . We have split the data into clean_test.txt, clean_train. txt,clean_val.txt and noisy_train.txt in our `./clothing` directory.
 
 - To run experiments of *Clothing1M* dataset in `clothing` directory, pleases run all the baseline in the following order: 
 
