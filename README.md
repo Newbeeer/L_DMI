@@ -4,6 +4,8 @@ Implementation for NeurIPS 2019 paper : <img src="https://github.com/Newbeeer/L_
 
 paper link: https://arxiv.org/abs/1909.03388
 
+[[Slide](https://www.dropbox.com/s/3lvwp7kgv6nrkm9/DMI_Slides.pdf?dl=0)]
+
 
 
 <img src="https://github.com/Newbeeer/L_DMI/blob/master/graph.png" width="650px" />
